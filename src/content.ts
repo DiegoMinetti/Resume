@@ -75,7 +75,9 @@ export const content: Record<Locale, ResumeContent> = {
     ],
     projectsTitle: 'Selected Products',
     projects: [
+      { name: 'FewLines CRM/SaaS', description: 'Business-critical platform for invoicing, purchasing, inventory, customers, fiscal integrations and financial workflows.', technologies: '.NET · React · TypeScript · SQL Server · Docker · AFIP/ARCA' },
       { name: 'Tu Evento en Fotos', description: 'Real-time B2B2C event-photo product covering media, interaction, storage, payments and live experiences.', technologies: 'React · TypeScript · Real-time systems · Storage · Payments' },
+      { name: 'Hardware-chain Retail PWA', description: 'Large-scale retail PWA delivered with a four-person Agile XP team for a major Argentine hardware-store chain.', technologies: 'ASP.NET MVC · JavaScript · AWS · DynamoDB · PWA' },
       { name: 'AlbumPanini', description: 'Collection-agnostic offline-first PWA with IndexedDB migrations, OCR scanning, compressed backups, analytics and serverless QR exchange.', technologies: 'React · TypeScript · IndexedDB · OCR · Playwright · CI/CD' },
       { name: 'AI Usage Menubar', description: 'Native macOS app that normalizes usage data from multiple AI platforms and protects credentials with Keychain.', technologies: 'Swift · SwiftUI · MVVM · APIs · Keychain' },
       { name: 'Local AI Chat', description: 'Private PWA that runs language models locally in the browser for customer-oriented conversations.', technologies: 'React · WebLLM · Transformers.js · PWA' },
@@ -134,7 +136,9 @@ export const content: Record<Locale, ResumeContent> = {
     ],
     projectsTitle: 'Productos Destacados',
     projects: [
+      { name: 'FewLines CRM/SaaS', description: 'Plataforma crítica para facturación, compras, inventario, clientes, integraciones fiscales y flujos financieros.', technologies: '.NET · React · TypeScript · SQL Server · Docker · AFIP/ARCA' },
       { name: 'Tu Evento en Fotos', description: 'Producto B2B2C en tiempo real para eventos, con contenido multimedia, interacción, almacenamiento, pagos y experiencias en vivo.', technologies: 'React · TypeScript · Tiempo real · Almacenamiento · Pagos' },
+      { name: 'PWA de Retail para Cadena de Ferreterías', description: 'PWA de retail de gran escala entregada con un equipo Agile XP de cuatro personas para una importante cadena argentina de ferreterías.', technologies: 'ASP.NET MVC · JavaScript · AWS · DynamoDB · PWA' },
       { name: 'AlbumPanini', description: 'PWA offline-first independiente de una colección específica, con migraciones de IndexedDB, OCR, backups comprimidos, analítica e intercambio por QR sin servidor.', technologies: 'React · TypeScript · IndexedDB · OCR · Playwright · CI/CD' },
       { name: 'AI Usage Menubar', description: 'Aplicación nativa de macOS que normaliza el uso de múltiples plataformas de IA y protege credenciales con Keychain.', technologies: 'Swift · SwiftUI · MVVM · APIs · Keychain' },
       { name: 'Local AI Chat', description: 'PWA privada que ejecuta modelos de lenguaje localmente en el navegador para conversaciones orientadas al cliente.', technologies: 'React · WebLLM · Transformers.js · PWA' },
