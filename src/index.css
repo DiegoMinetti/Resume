@@ -56,6 +56,7 @@ body {
 }
 
 .toolbar .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.language-switch { min-width: 82px; justify-content: center; }
 
 .btn {
   display: inline-flex;
@@ -105,12 +106,9 @@ body {
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 6px;
-  background: linear-gradient(135deg, #0f172a 0%, #4338ca 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #0f172a;
 }
-.resume__title { font-size: 14px; font-weight: 600; color: #475569; margin: 0 0 12px; }
+.resume__title { font-size: 14px; font-weight: 600; color: #475569; margin: 0 0 12px; overflow-wrap: anywhere; }
 .resume__contacts { font-size: 13px; color: #475569; line-height: 1.7; }
 .resume__contacts a { color: #4338ca; text-decoration: none; font-weight: 500; }
 .resume__contacts a:hover { text-decoration: underline; }
@@ -141,6 +139,8 @@ body {
 .list { margin: 0; padding-left: 18px; }
 .list li { margin: 4px 0; }
 .list li::marker { color: #94a3b8; }
+.list.columns { columns: 2; column-gap: 32px; }
+.list.compact { margin-top: 6px; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .tag {
@@ -160,6 +160,11 @@ body {
 .exp-meta { color: #64748b; font-size: 13px; margin-top: 2px; }
 .exp-desc { color: #334155; margin-top: 4px; }
 
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.project { padding: 12px; border: 1px solid #e2e8f0; border-radius: 10px; break-inside: avoid; }
+.project p { margin: 4px 0 6px; }
+.project-tech { color: #4338ca; font-size: 12px; font-weight: 600; }
+
 .footer-note {
   margin-top: 24px;
   text-align: center;
@@ -175,6 +180,8 @@ body {
   .toolbar { flex-direction: column; align-items: stretch; }
   .toolbar .actions { justify-content: stretch; }
   .toolbar .actions .btn { flex: 1; justify-content: center; }
+  .list.columns { columns: 1; }
+  .project-grid { grid-template-columns: 1fr; }
 }
 
 /* ===== PDF-friendly (applies during export) ===== */
@@ -182,3 +189,4 @@ body {
 .pdf-mode .toolbar { display: none !important; }
 .pdf-mode .resume { box-shadow: none !important; border: none !important; padding: 24px !important; }
 .pdf-mode .page { padding: 0 !important; max-width: 100% !important; }
+.pdf-mode .resume__name { background: none !important; color: #0f172a !important; -webkit-text-fill-color: #0f172a !important; }
