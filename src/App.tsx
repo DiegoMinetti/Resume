@@ -72,7 +72,7 @@ function App() {
           </article>)}
         </Section>
         <Section title={t.projectsTitle}>
-          <div className="project-grid">{t.projects.map(project => <article className="project" key={project.name}>
+          <div className="project-grid">{t.projects.map(project => <article className="project" id={projectId(project.name)} key={project.name}>
             <div className="exp-role">{project.name}</div><p>{project.description}</p><div className="project-tech">{project.technologies}</div>
           </article>)}</div>
         </Section>
@@ -143,6 +143,13 @@ function createPdfDefinition(locale: Locale): TDocumentDefinitions {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return <section className="section"><h2 className="section__title">{title}</h2><div className="section__body">{children}</div></section>
+}
+
+function projectId(name: string): string {
+  if (name.startsWith('FewLines')) return 'fewlines'
+  if (name === 'Tu Evento en Fotos') return 'tu-evento-en-fotos'
+  if (name.includes('Hardware') || name.includes('Ferreterías')) return 'pwa-ferreterias'
+  return name.toLowerCase().replace(/\s+/g, '-')
 }
 
 export default App
