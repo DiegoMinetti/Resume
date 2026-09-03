@@ -3,6 +3,11 @@ import pdfMake from 'pdfmake/build/pdfmake'
 import pdfFonts from 'pdfmake/build/vfs_fonts'
 import type { Content, TDocumentDefinitions } from 'pdfmake/interfaces'
 import { content, type Locale } from './content'
+import {
+  trackLanguageSwitch,
+  trackPdfDownload,
+  trackResumeView,
+} from './lib/umami'
 
 ;(pdfMake as typeof pdfMake & { vfs: Record<string, string> }).vfs =
   pdfFonts as unknown as Record<string, string>
@@ -23,7 +28,17 @@ function App() {
     const url = new URL(window.location.href)
     url.searchParams.set('lang', locale)
     window.history.replaceState({}, '', url)
+    // Record a virtual pageview + custom event so ES/EN show up as
+    // distinct rows in Umami's Pages report and we can count views per
+    // locale. Runs on mount and on every locale change.
+    trackResumeView(locale)
   }, [locale])
+
+  const handleLanguageSwitch = () => {
+    const next: Locale = locale === 'en' ? 'es' : 'en'
+    trackLanguageSwitch(locale, next)
+    setLocale(next)
+  }
 
   const downloadPdf = async () => {
     setExporting(true)
@@ -31,6 +46,7 @@ function App() {
       pdfMake
         .createPdf(createPdfDefinition(locale))
         .download(`Diego_Minetti_Resume_${locale.toUpperCase()}.pdf`)
+      trackPdfDownload(locale)
     } finally {
       setExporting(false)
     }
@@ -47,7 +63,7 @@ function App() {
           <button
             className="btn language-switch"
             type="button"
-            onClick={() => setLocale(locale === 'en' ? 'es' : 'en')}
+            onClick={handleLanguageSwitch}
             aria-label={`Change language to ${t.switchLabel}`}
           >
             {t.switchLabel}
@@ -57,6 +73,7 @@ function App() {
             href="https://github.com/DiegoMinetti"
             target="_blank"
             rel="noreferrer noopener"
+            data-umami-event="outbound-github"
           >
             <span>GitHub</span>
             <span aria-hidden="true">↗</span>
@@ -66,6 +83,7 @@ function App() {
             href="https://www.linkedin.com/in/diegominetti"
             target="_blank"
             rel="noreferrer noopener"
+            data-umami-event="outbound-linkedin"
           >
             <span>LinkedIn</span>
             <span aria-hidden="true">↗</span>
