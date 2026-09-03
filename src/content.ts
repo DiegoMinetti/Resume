@@ -1,147 +1,129 @@
 export type Locale = 'en' | 'es'
-
+type Group = { title: string; items: string[] }
 export type ResumeContent = {
-  localeLabel: string
-  switchLabel: string
-  download: string
-  generating: string
-  title: string
-  locationLine: string
-  profileTitle: string
-  profile: string
-  expertiseTitle: string
-  expertise: string[]
-  stackTitle: string
-  stack: string[]
-  achievementsTitle: string
-  achievements: string[]
-  experienceTitle: string
-  experience: { role: string; period: string; description: string; bullets: string[] }[]
-  projectsTitle: string
-  projects: { name: string; description: string; technologies: string }[]
-  educationTitle: string
-  education: string[]
+  localeLabel: string; switchLabel: string; skipLabel: string; brandLabel: string
+  download: string; downloadAria: string; generating: string; title: string; locationLine: string
+  profileTitle: string; profile: string; expertiseTitle: string; expertise: Group[]
+  stackTitle: string; stack: Group[]; achievementsTitle: string; achievements: string[]
+  experienceTitle: string; experience: { role: string; period: string; description: string; bullets: string[] }[]
+  projectsTitle: string; projects: { name: string; description: string; technologies: string }[]
+  educationTitle: string; education: string[]; languagesTitle: string; languages: string[]
+  metaTitle: string; metaDescription: string
 }
 
 export const content: Record<Locale, ResumeContent> = {
   en: {
-    localeLabel: 'English',
-    switchLabel: 'Español',
-    download: 'Download PDF',
-    generating: 'Generating…',
-    title: 'Senior Product Engineer | SaaS & Solution Architect | .NET · React · TypeScript · AWS · Docker',
-    locationLine: 'Argentine & Italian citizen · Based in Buenos Aires · Open to remote work and relocation to the United States',
+    localeLabel: 'English', switchLabel: 'Español', skipLabel: 'Skip to resume content', brandLabel: 'Diego Minetti · Resume',
+    download: 'Download PDF', downloadAria: 'Download resume as PDF', generating: 'Generating…',
+    title: 'Senior Full-Stack & Product Engineer | SaaS Architecture | .NET · React · TypeScript · Cloud · AI',
+    locationLine: 'Argentine & Italian citizen · Based in Buenos Aires (UTC−3) · Available for fully remote international roles',
     profileTitle: 'Profile',
-    profile: 'Senior Product Engineer and SaaS Architect with 20+ years of experience turning real business problems into reliable software products. I work across the full product lifecycle: user and business discovery, architecture, frontend and backend development, data, integrations, infrastructure and production operations. Founder of FewLines, where I build and evolve business-critical CRM/SaaS products in direct collaboration with customers.',
+    profile: 'Senior Full-Stack & Product Engineer with 20+ years of experience designing, building and operating business-critical software. Specialized in .NET, React and TypeScript, with end-to-end ownership across architecture, backend, frontend, databases, integrations, infrastructure and production. Founder of FewLines, where I turn real customer and business problems into production software, combining hands-on engineering with product and technical decision-making.',
     expertiseTitle: 'Core Expertise',
-    expertise: ['Product Engineering', 'SaaS & Solution Architecture', 'Full-Stack Development', 'Product Discovery', 'API & Fiscal Integrations', 'Cloud, DevOps & CI/CD', 'Database Design', 'Security & Authentication', 'Process Automation', 'Technical Leadership'],
-    stackTitle: 'Technology',
-    stack: ['.NET', 'C#', 'ASP.NET MVC', 'Web APIs', 'Entity Framework', 'React', 'TypeScript', 'JavaScript', 'SQL Server', 'DynamoDB', 'Docker', 'AWS', 'GitHub Actions', 'XUnit', 'Linux', 'SignalR', 'SwiftUI', 'Python'],
+    expertise: [
+      { title: 'Engineering', items: ['Full-Stack Engineering', 'SaaS Architecture', 'Real-Time Systems', 'API Design', 'Database Architecture'] },
+      { title: 'Product', items: ['Product Engineering', 'Business Process Automation', 'Technical Discovery', 'Third-Party Integrations'] },
+      { title: 'Delivery', items: ['Cloud & Infrastructure', 'Docker', 'CI/CD', 'Production Operations', 'Technical Leadership'] },
+    ],
+    stackTitle: 'Technology Stack',
+    stack: [
+      { title: 'Backend', items: ['C#', '.NET / ASP.NET Core', 'Web APIs', 'Entity Framework Core', 'SignalR'] },
+      { title: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'PWA'] },
+      { title: 'Data', items: ['SQL Server', 'DynamoDB'] },
+      { title: 'Cloud & DevOps', items: ['Docker', 'GitHub Actions', 'CI/CD', 'AWS', 'Linux'] },
+      { title: 'AI & Automation', items: ['LLM APIs', 'AI Coding Agents', 'GitHub Copilot', 'Codex', 'Local LLMs', 'Python'] },
+    ],
     achievementsTitle: 'Selected Impact',
     achievements: [
-      'Founded FewLines and architected its CRM/SaaS platform for invoicing, purchasing, inventory, customers and financial workflows.',
-      'Integrated AFIP/ARCA fiscal services, document generation and spreadsheet workflows into production business processes.',
-      'Led product and technical delivery of a retail PWA for a major Argentine hardware-store chain with a four-person Agile XP team.',
-      'Designed and operated production systems across application, database, cloud, containers, networking and automation.',
+      'Founded and architected FewLines, a production business-management platform covering invoicing, purchasing, inventory, customer accounts, financial workflows and fiscal integrations.',
+      'Designed and implemented production integrations with AFIP/ARCA fiscal services, automating electronic invoicing, document generation and business-critical fiscal workflows.',
+      'Led technical delivery of a production retail platform for a major Argentine hardware-store chain, working in a four-engineer Agile XP team across application architecture, development and deployment.',
     ],
     experienceTitle: 'Experience',
     experience: [
-      {
-        role: 'Founder & Senior Product Engineer — FewLines',
-        period: '2020 – Present · Argentina',
-        description: 'Own the product lifecycle for a business-critical CRM/SaaS platform, from customer discovery and architecture to implementation and production operations.',
-        bullets: [
-          'Design and build secure role-based workflows with .NET, React/TypeScript, SQL Server, Docker and automated tests.',
-          'Integrate AFIP/ARCA services, APIs, PDF generation and Excel-based workflows.',
-          'Translate direct customer needs into product capabilities and technical decisions.',
-        ],
-      },
-      {
-        role: 'Senior Software Engineer & Technical Lead — Independent',
-        period: '2018 – 2020 · Argentina',
-        description: 'Led development of a large-scale retail PWA for a major Argentine hardware-store chain.',
-        bullets: ['Worked with a four-person Agile XP team.', 'Built with ASP.NET MVC, JavaScript, AWS and DynamoDB.'],
-      },
-      {
-        role: 'Software Engineer & IT Specialist — Smmart Internet',
-        period: '2004 – 2018 · Argentina',
-        description: 'Progressed from trainee developer to software engineer and infrastructure specialist.',
-        bullets: [
-          'Developed CRM, passenger-management, inventory and merchandise-management systems.',
-          'Designed SQL Server databases and business workflows across ASP, ASP.NET, JavaScript, PHP and MySQL.',
-          'Automated server operations with Python and managed servers, workstations and networks.',
-        ],
-      },
+      { role: 'Founder & Senior Product Engineer — FewLines', period: '2020 – Present · Argentina', description: 'Own FewLines end-to-end, from customer discovery and product decisions to architecture, development, deployment and production operations.', bullets: [
+        'Architect and develop business-critical workflows for sales, purchasing, inventory, invoicing, customer accounts and financial operations using .NET, React/TypeScript and SQL Server.',
+        'Design and maintain integrations with AFIP/ARCA fiscal services and third-party APIs, including electronic invoicing, document generation and automated data workflows.',
+        'Work directly with customers to identify operational problems, define product requirements and turn them into maintainable production solutions.',
+        'Own production infrastructure and delivery workflows using Docker, Linux and CI/CD, including deployments, monitoring, backups and operational automation.',
+      ] },
+      { role: 'Senior Software Engineer & Technical Lead — Independent', period: '2018 – 2020 · Argentina', description: 'Led technical development of a production PWA supporting purchasing, receiving, distribution and retail operations for a major Argentine hardware-store chain.', bullets: [
+        'Worked in a four-engineer Agile XP team, contributing across architecture, backend, frontend, data and production delivery.',
+        'ASP.NET MVC · JavaScript · AWS · DynamoDB · PWA',
+      ] },
+      { role: 'Software Engineer & IT Specialist — Smmart Internet', period: '2004 – 2018 · Argentina', description: 'Progressed from trainee developer to senior software and infrastructure responsibilities across 14 years, building and operating business-critical systems for multiple industries.', bullets: [
+        'Developed CRM, transportation, inventory and merchandise-management platforms using ASP.NET, JavaScript and SQL Server.',
+        'Combined software engineering with infrastructure ownership, including databases, servers, networking and production automation.',
+      ] },
     ],
     projectsTitle: 'Selected Products',
     projects: [
-      { name: 'FewLines CRM/SaaS', description: 'Business-critical platform for invoicing, purchasing, inventory, customers, fiscal integrations and financial workflows.', technologies: '.NET · React · TypeScript · SQL Server · Docker · AFIP/ARCA' },
-      { name: 'Tu Evento en Fotos', description: 'Real-time B2B2C event-photo product covering media, interaction, storage, payments and live experiences.', technologies: 'React · TypeScript · Real-time systems · Storage · Payments' },
-      { name: 'Hardware-chain Retail PWA', description: 'Large-scale retail PWA delivered with a four-person Agile XP team for a major Argentine hardware-store chain.', technologies: 'ASP.NET MVC · JavaScript · AWS · DynamoDB · PWA' },
-      { name: 'AI Usage Menubar', description: 'Native macOS app that normalizes usage data from multiple AI platforms and protects credentials with Keychain.', technologies: 'Swift · SwiftUI · MVVM · APIs · Keychain' },
-      { name: 'Local AI Chat', description: 'Private PWA that runs language models locally in the browser for customer-oriented conversations.', technologies: 'React · WebLLM · Transformers.js · PWA' },
+      { name: 'FewLines', description: 'Business-management platform covering invoicing, purchasing, inventory, customer accounts, fiscal integrations and financial workflows.', technologies: '.NET · React · TypeScript · SQL Server · Docker · AFIP/ARCA' },
+      { name: 'ChatCentral', description: 'Multi-tenant omnichannel customer communications platform integrating WhatsApp, Facebook, Instagram, Telegram and web chat, with real-time messaging, conversation management and AI-assisted workflows.', technologies: 'Multi-Tenant SaaS · Real-Time Messaging · Third-Party Integrations · AI/LLM' },
+      { name: 'Tu Evento en Fotos', description: 'Production SaaS platform enabling event guests to upload, share and interact with photos and videos in real time through QR-based experiences, including media processing, storage, payments and live displays.', technologies: 'React · TypeScript · Real-Time Systems · Storage · Payments' },
+      { name: 'Hardware-chain Retail Platform', description: 'Production PWA supporting purchasing, receiving, distribution and retail operations, delivered with a four-engineer Agile XP team.', technologies: 'ASP.NET MVC · JavaScript · AWS · DynamoDB · PWA' },
+      { name: 'AI Usage Menubar', description: 'Native macOS application that aggregates usage and quota data across multiple AI providers, providing developers with a unified real-time view while securely storing credentials in macOS Keychain.', technologies: 'Swift · SwiftUI · MVVM · REST APIs · Keychain' },
     ],
-    educationTitle: 'Education & Languages',
-    education: ['UADE — Computer Engineering studies (2005–2010)', 'EF SET English Certificate: 75/100 — C2 Proficient', 'Spanish: Native · English: C2 Proficient'],
+    educationTitle: 'Education', education: ['Computer Engineering — Coursework', 'UADE · 2005–2010'],
+    languagesTitle: 'Languages', languages: ['Spanish: Native', 'English: C2 Proficient — EF SET 75/100'],
+    metaTitle: 'Diego Minetti | Senior Full-Stack & Product Engineer',
+    metaDescription: 'Senior Full-Stack & Product Engineer with 20+ years of experience building SaaS and business-critical software with .NET, React and TypeScript.',
   },
   es: {
-    localeLabel: 'Español',
-    switchLabel: 'English',
-    download: 'Descargar PDF',
-    generating: 'Generando…',
-    title: 'Senior Product Engineer | Arquitecto SaaS | .NET · React · TypeScript · AWS · Docker',
-    locationLine: 'Ciudadano argentino e italiano · Residente en Buenos Aires · Disponible para trabajo remoto y relocalización en Estados Unidos',
+    localeLabel: 'Español', switchLabel: 'English', skipLabel: 'Ir al contenido del CV', brandLabel: 'Diego Minetti · CV',
+    download: 'Descargar PDF', downloadAria: 'Descargar CV en PDF', generating: 'Generando…',
+    title: 'Senior Full-Stack & Product Engineer | Arquitectura SaaS | .NET · React · TypeScript · Cloud · AI',
+    locationLine: 'Ciudadano argentino e italiano · Buenos Aires (UTC−3) · Disponible para posiciones internacionales 100% remotas',
     profileTitle: 'Perfil',
-    profile: 'Senior Product Engineer y Arquitecto SaaS con más de 20 años de experiencia convirtiendo problemas reales de negocio en productos de software confiables. Trabajo sobre todo el ciclo de producto: descubrimiento de usuarios y negocio, arquitectura, frontend, backend, datos, integraciones, infraestructura y operación en producción. Soy fundador de FewLines, donde construyo y evoluciono productos CRM/SaaS críticos en colaboración directa con clientes.',
+    profile: 'Senior Full-Stack & Product Engineer con más de 20 años de experiencia diseñando, construyendo y operando software crítico para negocios. Especializado en .NET, React y TypeScript, con responsabilidad integral sobre arquitectura, backend, frontend, bases de datos, integraciones, infraestructura y producción. Fundador de FewLines, donde convierto problemas reales de clientes y del negocio en software productivo, combinando ingeniería hands-on con decisiones de producto y tecnología.',
     expertiseTitle: 'Especialidades',
-    expertise: ['Ingeniería de Producto', 'Arquitectura SaaS y de Soluciones', 'Desarrollo Full Stack', 'Descubrimiento de Producto', 'Integraciones de APIs y Fiscales', 'Cloud, DevOps y CI/CD', 'Diseño de Bases de Datos', 'Seguridad y Autenticación', 'Automatización de Procesos', 'Liderazgo Técnico'],
-    stackTitle: 'Tecnologías',
-    stack: ['.NET', 'C#', 'ASP.NET MVC', 'Web APIs', 'Entity Framework', 'React', 'TypeScript', 'JavaScript', 'SQL Server', 'DynamoDB', 'Docker', 'AWS', 'GitHub Actions', 'XUnit', 'Linux', 'SignalR', 'SwiftUI', 'Python'],
+    expertise: [
+      { title: 'Ingeniería', items: ['Ingeniería Full-Stack', 'Arquitectura SaaS', 'Sistemas en Tiempo Real', 'Diseño de APIs', 'Arquitectura de Bases de Datos'] },
+      { title: 'Producto', items: ['Ingeniería de Producto', 'Automatización de Procesos de Negocio', 'Descubrimiento Técnico', 'Integraciones con Terceros'] },
+      { title: 'Entrega', items: ['Cloud e Infraestructura', 'Docker', 'CI/CD', 'Operaciones de Producción', 'Liderazgo Técnico'] },
+    ],
+    stackTitle: 'Stack Tecnológico',
+    stack: [
+      { title: 'Backend', items: ['C#', '.NET / ASP.NET Core', 'Web APIs', 'Entity Framework Core', 'SignalR'] },
+      { title: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'PWA'] },
+      { title: 'Datos', items: ['SQL Server', 'DynamoDB'] },
+      { title: 'Cloud y DevOps', items: ['Docker', 'GitHub Actions', 'CI/CD', 'AWS', 'Linux'] },
+      { title: 'IA y Automatización', items: ['APIs de LLMs', 'Agentes de IA para Desarrollo', 'GitHub Copilot', 'Codex', 'LLMs Locales', 'Python'] },
+    ],
     achievementsTitle: 'Impacto Destacado',
     achievements: [
-      'Fundé FewLines y diseñé la arquitectura de su plataforma CRM/SaaS para facturación, compras, inventario, clientes y finanzas.',
-      'Integré servicios fiscales de AFIP/ARCA, generación de documentos y flujos con planillas dentro de procesos productivos.',
-      'Lideré la entrega de producto y tecnología de una PWA para una importante cadena argentina de ferreterías con un equipo Agile XP de cuatro personas.',
-      'Diseñé y operé sistemas productivos abarcando aplicación, datos, cloud, contenedores, redes y automatización.',
+      'Fundé FewLines y diseñé la arquitectura de una plataforma productiva de gestión empresarial que abarca facturación, compras, inventario, cuentas de clientes, flujos financieros e integraciones fiscales.',
+      'Diseñé e implementé integraciones productivas con servicios fiscales de AFIP/ARCA, automatizando facturación electrónica, generación de documentos y procesos fiscales críticos para el negocio.',
+      'Lideré la entrega técnica de una plataforma productiva de retail para una importante cadena argentina de ferreterías, trabajando en un equipo Agile XP de cuatro ingenieros sobre arquitectura, desarrollo y despliegue.',
     ],
     experienceTitle: 'Experiencia',
     experience: [
-      {
-        role: 'Fundador y Senior Product Engineer — FewLines',
-        period: '2020 – Actualidad · Argentina',
-        description: 'Responsable del ciclo de producto de una plataforma CRM/SaaS crítica, desde el descubrimiento con clientes y la arquitectura hasta la implementación y operación.',
-        bullets: [
-          'Diseño y desarrollo flujos seguros basados en roles con .NET, React/TypeScript, SQL Server, Docker y pruebas automatizadas.',
-          'Integro servicios de AFIP/ARCA, APIs, generación de PDF y procesos basados en Excel.',
-          'Convierto necesidades directas de clientes en capacidades de producto y decisiones técnicas.',
-        ],
-      },
-      {
-        role: 'Senior Software Engineer y Líder Técnico — Independiente',
-        period: '2018 – 2020 · Argentina',
-        description: 'Lideré el desarrollo de una PWA de retail para una importante cadena argentina de ferreterías.',
-        bullets: ['Trabajé con un equipo de cuatro personas utilizando Agile XP.', 'Construida con ASP.NET MVC, JavaScript, AWS y DynamoDB.'],
-      },
-      {
-        role: 'Software Engineer y Especialista de TI — Smmart Internet',
-        period: '2004 – 2018 · Argentina',
-        description: 'Evolucioné desde desarrollador trainee hasta ingeniero de software y especialista de infraestructura.',
-        bullets: [
-          'Desarrollé sistemas CRM, gestión de pasajeros, inventario y acopio de mercadería.',
-          'Diseñé bases SQL Server y procesos de negocio con ASP, ASP.NET, JavaScript, PHP y MySQL.',
-          'Automaticé servidores con Python y administré servidores, puestos de trabajo y redes.',
-        ],
-      },
+      { role: 'Fundador y Senior Product Engineer — FewLines', period: '2020 – Actualidad · Argentina', description: 'Lidero FewLines de punta a punta: desde el descubrimiento con clientes y las decisiones de producto hasta la arquitectura, el desarrollo, el despliegue y la operación en producción.', bullets: [
+        'Diseño y desarrollo procesos críticos para ventas, compras, inventario, facturación, cuentas de clientes y operaciones financieras con .NET, React/TypeScript y SQL Server.',
+        'Diseño y mantengo integraciones con servicios fiscales de AFIP/ARCA y APIs de terceros, incluyendo facturación electrónica, generación de documentos y flujos de datos automatizados.',
+        'Trabajo directamente con clientes para detectar problemas operativos, definir requisitos de producto y convertirlos en soluciones productivas mantenibles.',
+        'Gestiono la infraestructura productiva y los flujos de entrega con Docker, Linux y CI/CD, incluyendo despliegues, monitoreo, backups y automatización operativa.',
+      ] },
+      { role: 'Senior Software Engineer y Líder Técnico — Independiente', period: '2018 – 2020 · Argentina', description: 'Lideré el desarrollo técnico de una PWA productiva para compras, recepción, distribución y operaciones de retail de una importante cadena argentina de ferreterías.', bullets: [
+        'Trabajé en un equipo Agile XP de cuatro ingenieros, contribuyendo en arquitectura, backend, frontend, datos y entrega a producción.',
+        'ASP.NET MVC · JavaScript · AWS · DynamoDB · PWA',
+      ] },
+      { role: 'Software Engineer y Especialista de TI — Smmart Internet', period: '2004 – 2018 · Argentina', description: 'Evolucioné desde desarrollador trainee hasta asumir responsabilidades senior de software e infraestructura durante 14 años, construyendo y operando sistemas críticos para múltiples industrias.', bullets: [
+        'Desarrollé plataformas de CRM, transporte, inventario y gestión de mercadería con ASP.NET, JavaScript y SQL Server.',
+        'Combiné ingeniería de software con responsabilidad sobre infraestructura, incluyendo bases de datos, servidores, redes y automatización productiva.',
+      ] },
     ],
     projectsTitle: 'Productos Destacados',
     projects: [
-      { name: 'FewLines CRM/SaaS', description: 'Plataforma crítica para facturación, compras, inventario, clientes, integraciones fiscales y flujos financieros.', technologies: '.NET · React · TypeScript · SQL Server · Docker · AFIP/ARCA' },
-      { name: 'Tu Evento en Fotos', description: 'Producto B2B2C en tiempo real para eventos, con contenido multimedia, interacción, almacenamiento, pagos y experiencias en vivo.', technologies: 'React · TypeScript · Tiempo real · Almacenamiento · Pagos' },
-      { name: 'PWA de Retail para Cadena de Ferreterías', description: 'PWA de retail de gran escala entregada con un equipo Agile XP de cuatro personas para una importante cadena argentina de ferreterías.', technologies: 'ASP.NET MVC · JavaScript · AWS · DynamoDB · PWA' },
-      { name: 'AI Usage Menubar', description: 'Aplicación nativa de macOS que normaliza el uso de múltiples plataformas de IA y protege credenciales con Keychain.', technologies: 'Swift · SwiftUI · MVVM · APIs · Keychain' },
-      { name: 'Local AI Chat', description: 'PWA privada que ejecuta modelos de lenguaje localmente en el navegador para conversaciones orientadas al cliente.', technologies: 'React · WebLLM · Transformers.js · PWA' },
+      { name: 'FewLines', description: 'Plataforma de gestión empresarial para facturación, compras, inventario, cuentas de clientes, integraciones fiscales y flujos financieros.', technologies: '.NET · React · TypeScript · SQL Server · Docker · AFIP/ARCA' },
+      { name: 'ChatCentral', description: 'Plataforma SaaS multi-tenant de comunicación omnicanal que integra WhatsApp, Facebook, Instagram, Telegram y chat web, con mensajería en tiempo real, gestión de conversaciones y flujos asistidos por IA.', technologies: 'SaaS Multi-Tenant · Mensajería en Tiempo Real · Integraciones con Terceros · IA/LLM' },
+      { name: 'Tu Evento en Fotos', description: 'Plataforma SaaS productiva que permite a invitados de eventos subir, compartir e interactuar con fotos y videos en tiempo real mediante experiencias basadas en QR, incluyendo procesamiento multimedia, almacenamiento, pagos y pantallas en vivo.', technologies: 'React · TypeScript · Sistemas en Tiempo Real · Almacenamiento · Pagos' },
+      { name: 'Plataforma de Retail para Cadena de Ferreterías', description: 'PWA productiva para compras, recepción, distribución y operaciones de retail, entregada con un equipo Agile XP de cuatro ingenieros.', technologies: 'ASP.NET MVC · JavaScript · AWS · DynamoDB · PWA' },
+      { name: 'AI Usage Menubar', description: 'Aplicación nativa para macOS que consolida datos de uso y cuotas de múltiples proveedores de IA, ofreciendo a desarrolladores una vista unificada en tiempo real y almacenando credenciales de forma segura en macOS Keychain.', technologies: 'Swift · SwiftUI · MVVM · REST APIs · Keychain' },
     ],
-    educationTitle: 'Educación e Idiomas',
-    education: ['UADE — Estudios de Ingeniería Informática (2005–2010)', 'Certificado EF SET: 75/100 — Inglés C2', 'Español: nativo · Inglés: C2'],
+    educationTitle: 'Educación', education: ['Ingeniería Informática — Estudios universitarios', 'UADE · 2005–2010'],
+    languagesTitle: 'Idiomas', languages: ['Español: Nativo', 'Inglés: C2 Proficient — EF SET 75/100'],
+    metaTitle: 'Diego Minetti | Senior Full-Stack & Product Engineer',
+    metaDescription: 'Senior Full-Stack & Product Engineer con más de 20 años de experiencia construyendo productos SaaS y software crítico con .NET, React y TypeScript.',
   },
 }

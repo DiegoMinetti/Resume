@@ -25,6 +25,12 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = locale
+    document.title = t.metaTitle
+    document.querySelector('meta[name="description"]')?.setAttribute('content', t.metaDescription)
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', t.metaTitle)
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', t.metaDescription)
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', t.metaTitle)
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', t.metaDescription)
     const url = new URL(window.location.href)
     url.searchParams.set('lang', locale)
     window.history.replaceState({}, '', url)
@@ -32,7 +38,7 @@ function App() {
     // distinct rows in Umami's Pages report and we can count views per
     // locale. Runs on mount and on every locale change.
     trackResumeView(locale)
-  }, [locale])
+  }, [locale, t.metaDescription, t.metaTitle])
 
   const handleLanguageSwitch = () => {
     const next: Locale = locale === 'en' ? 'es' : 'en'
@@ -55,16 +61,16 @@ function App() {
   return (
     <div className="page">
       <a className="skip-link" href="#resume">
-        Skip to resume content
+        {t.skipLabel}
       </a>
       <header className="toolbar">
-        <div className="brand">Diego Minetti · Resume</div>
+        <div className="brand">{t.brandLabel}</div>
         <div className="actions">
           <button
             className="btn language-switch"
             type="button"
             onClick={handleLanguageSwitch}
-            aria-label={`Change language to ${t.switchLabel}`}
+            aria-label={`${locale === 'en' ? 'Change language to' : 'Cambiar idioma a'} ${t.switchLabel}`}
           >
             {t.switchLabel}
           </button>
@@ -93,7 +99,7 @@ function App() {
             className="btn btn--primary"
             onClick={downloadPdf}
             disabled={exporting}
-            aria-label={`${t.download} as PDF`}
+            aria-label={t.downloadAria}
           >
             {exporting ? (
               <>
@@ -127,20 +133,10 @@ function App() {
           <p>{t.profile}</p>
         </Section>
         <Section title={t.expertiseTitle}>
-          <ul className="list columns">
-            {t.expertise.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <GroupedContent groups={t.expertise} />
         </Section>
         <Section title={t.stackTitle}>
-          <div className="tags">
-            {t.stack.map((item) => (
-              <span className="tag" key={item}>
-                {item}
-              </span>
-            ))}
-          </div>
+          <GroupedContent groups={t.stack} tags />
         </Section>
         <Section title={t.achievementsTitle}>
           <ul className="list">
@@ -179,6 +175,11 @@ function App() {
             {t.education.map((item) => (
               <li key={item}>{item}</li>
             ))}
+          </ul>
+        </Section>
+        <Section title={t.languagesTitle}>
+          <ul className="list inline-list">
+            {t.languages.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </Section>
       </main>
@@ -244,17 +245,29 @@ function createPdfDefinition(locale: Locale): TDocumentDefinitions {
         margin: [0, 0, 0, 8],
       },
       ...section(t.profileTitle, { text: t.profile }),
-      ...section(t.expertiseTitle, {
-        columns: [{ ul: t.expertise.slice(0, 5) }, { ul: t.expertise.slice(5) }],
-        columnGap: 22,
-      }),
-      ...section(t.stackTitle, { text: t.stack.join('  ·  '), color: '#312e81', bold: true }),
+      ...section(t.expertiseTitle, t.expertise.map((group) => ({
+        text: [{ text: `${group.title}: `, bold: true }, group.items.join(' · ')], margin: [0, 1, 0, 1],
+      }))),
+      ...section(t.stackTitle, t.stack.map((group) => ({
+        text: [{ text: `${group.title}: `, bold: true }, group.items.join(' · ')], color: '#312e81', margin: [0, 1, 0, 1],
+      }))),
       ...section(t.achievementsTitle, { ul: t.achievements }),
       ...section(t.experienceTitle, experience),
       ...section(t.projectsTitle, projects),
       ...section(t.educationTitle, { ul: t.education }),
+      ...section(t.languagesTitle, { ul: t.languages }),
     ],
   }
+}
+
+function GroupedContent({ groups, tags = false }: { groups: { title: string; items: string[] }[]; tags?: boolean }) {
+  return <div className="group-grid">
+    {groups.map((group) => <div className="content-group" key={group.title}>
+      <h3>{group.title}</h3>
+      {tags ? <div className="tags">{group.items.map((item) => <span className="tag" key={item}>{item}</span>)}</div>
+        : <ul className="list compact">{group.items.map((item) => <li key={item}>{item}</li>)}</ul>}
+    </div>)}
+  </div>
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

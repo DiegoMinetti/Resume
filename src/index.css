@@ -160,8 +160,12 @@ body {
 .list { margin: 0; padding-left: 18px; }
 .list li { margin: 4px 0; }
 .list li::marker { color: #94a3b8; }
-.list.columns { columns: 2; column-gap: 32px; }
 .list.compact { margin-top: 6px; }
+
+.group-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.content-group h3 { margin: 0 0 5px; color: #0f172a; font-size: 13px; }
+.content-group .tags { margin-top: 0; }
+.inline-list { display: flex; flex-wrap: wrap; gap: 6px 30px; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .tag {
@@ -201,7 +205,8 @@ body {
   .toolbar { flex-direction: column; align-items: stretch; }
   .toolbar .actions { justify-content: stretch; }
   .toolbar .actions .btn { flex: 1; justify-content: center; }
-  .list.columns { columns: 1; }
+  .group-grid { grid-template-columns: 1fr; }
+  .inline-list { display: block; }
   .project-grid { grid-template-columns: 1fr; }
 }
 
