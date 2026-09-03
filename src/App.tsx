@@ -101,6 +101,9 @@ function App() {
 
   return (
     <div className="page">
+      <a className="skip-link" href="#resume">
+        Skip to resume content
+      </a>
       <header className="toolbar" role="banner">
         <div className="brand">Diego Minetti · Resume</div>
         <div className="actions">
@@ -110,7 +113,8 @@ function App() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            GitHub ↗
+            <span>GitHub</span>
+            <span aria-hidden="true">↗</span>
           </a>
           <a
             className="btn"
@@ -118,7 +122,8 @@ function App() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            LinkedIn ↗
+            <span>LinkedIn</span>
+            <span aria-hidden="true">↗</span>
           </a>
           <button
             type="button"
@@ -129,16 +134,18 @@ function App() {
           >
             {exporting ? (
               <>
-                <span className="spinner" aria-hidden /> Generating…
+                <span className="spinner" aria-hidden="true" /> Generating…
               </>
             ) : (
-              <>⬇ Download PDF</>
+              <>
+                <span aria-hidden="true">⬇</span> Download PDF
+              </>
             )}
           </button>
         </div>
       </header>
 
-      <main className="resume" ref={resumeRef}>
+      <main id="resume" className="resume" ref={resumeRef} tabIndex={-1}>
         <header className="resume__header">
           <h1 className="resume__name">Diego Minetti</h1>
           <p className="resume__title">

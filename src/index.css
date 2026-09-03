@@ -14,6 +14,27 @@
 
 html, body { margin: 0; padding: 0; min-height: 100vh; }
 
+/* ===== Skip link (a11y) ===== */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 8px;
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+.resume:focus { outline: none; }
+
 body {
   background:
     radial-gradient(1200px 600px at 80% -10%, rgba(99, 102, 241, 0.18), transparent 60%),
