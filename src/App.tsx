@@ -118,15 +118,14 @@ function App() {
         <header className="resume__header">
           <h1 className="resume__name">Diego Minetti</h1>
           <p className="resume__title">{t.title}</p>
-          <p className="resume__contacts">
-            {t.locationLine}
-            <br />
-            <a href="mailto:diegominetti@gmail.com">diegominetti@gmail.com</a>
-            <span className="sep">·</span>
-            <a href="https://www.linkedin.com/in/diegominetti">linkedin.com/in/diegominetti</a>
-            <span className="sep">·</span>
-            <a href="https://github.com/DiegoMinetti">github.com/DiegoMinetti</a>
-          </p>
+          <div className="resume__contacts">
+            <p className="contact-location">{t.locationLine}</p>
+            <div className="contact-links">
+              <a href="mailto:diegominetti@gmail.com">diegominetti@gmail.com</a>
+              <a href="https://www.linkedin.com/in/diegominetti">linkedin.com/in/diegominetti</a>
+              <a href="https://github.com/DiegoMinetti">github.com/DiegoMinetti</a>
+            </div>
+          </div>
         </header>
 
         <Section title={t.profileTitle}>

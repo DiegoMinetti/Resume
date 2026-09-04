@@ -27,11 +27,12 @@ export const content: Record<Locale, ResumeContent> = {
     ],
     stackTitle: 'Technology Stack',
     stack: [
-      { title: 'Backend', items: ['C#', '.NET / ASP.NET Core', 'Web APIs', 'Entity Framework Core', 'SignalR'] },
-      { title: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'PWA'] },
-      { title: 'Data', items: ['SQL Server', 'DynamoDB'] },
-      { title: 'Cloud & DevOps', items: ['Docker', 'GitHub Actions', 'CI/CD', 'AWS', 'Linux'] },
+      { title: 'Backend', items: ['C#', '.NET / ASP.NET Core', 'Node.js', 'Fastify', 'Express', 'Web APIs', 'Entity Framework Core', 'Drizzle ORM', 'SignalR'] },
+      { title: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'Tailwind CSS', 'TanStack Query', 'PWA'] },
+      { title: 'Data', items: ['SQL Server', 'PostgreSQL', 'Redis', 'DynamoDB', 'SQLite', 'IndexedDB / Dexie'] },
+      { title: 'Cloud & DevOps', items: ['Docker', 'Docker Compose', 'GitHub Actions', 'CI/CD', 'AWS', 'Linux'] },
       { title: 'AI & Automation', items: ['LLM APIs', 'AI Coding Agents', 'GitHub Copilot', 'Codex', 'Local LLMs', 'Python'] },
+      { title: 'Testing & Quality', items: ['Vitest', 'Playwright', 'XUnit', 'TypeScript', 'ESLint'] },
     ],
     achievementsTitle: 'Selected Impact',
     achievements: [
@@ -84,11 +85,12 @@ export const content: Record<Locale, ResumeContent> = {
     ],
     stackTitle: 'Stack Tecnológico',
     stack: [
-      { title: 'Backend', items: ['C#', '.NET / ASP.NET Core', 'Web APIs', 'Entity Framework Core', 'SignalR'] },
-      { title: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'PWA'] },
-      { title: 'Datos', items: ['SQL Server', 'DynamoDB'] },
-      { title: 'Cloud y DevOps', items: ['Docker', 'GitHub Actions', 'CI/CD', 'AWS', 'Linux'] },
+      { title: 'Backend', items: ['C#', '.NET / ASP.NET Core', 'Node.js', 'Fastify', 'Express', 'Web APIs', 'Entity Framework Core', 'Drizzle ORM', 'SignalR'] },
+      { title: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'Tailwind CSS', 'TanStack Query', 'PWA'] },
+      { title: 'Datos', items: ['SQL Server', 'PostgreSQL', 'Redis', 'DynamoDB', 'SQLite', 'IndexedDB / Dexie'] },
+      { title: 'Cloud y DevOps', items: ['Docker', 'Docker Compose', 'GitHub Actions', 'CI/CD', 'AWS', 'Linux'] },
       { title: 'IA y Automatización', items: ['APIs de LLMs', 'Agentes de IA para Desarrollo', 'GitHub Copilot', 'Codex', 'LLMs Locales', 'Python'] },
+      { title: 'Testing y Calidad', items: ['Vitest', 'Playwright', 'XUnit', 'TypeScript', 'ESLint'] },
     ],
     achievementsTitle: 'Impacto Destacado',
     achievements: [

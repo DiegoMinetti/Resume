@@ -130,10 +130,13 @@ body {
   color: #0f172a;
 }
 .resume__title { font-size: 14px; font-weight: 600; color: #475569; margin: 0 0 12px; overflow-wrap: anywhere; }
-.resume__contacts { font-size: 13px; color: #475569; line-height: 1.7; }
+.resume__contacts { min-width: 0; font-size: 13px; color: #475569; line-height: 1.7; }
+.contact-location { margin: 0; overflow-wrap: anywhere; }
+.contact-links { display: flex; flex-wrap: wrap; gap: 0 18px; min-width: 0; }
+.contact-links a { min-width: 0; overflow-wrap: anywhere; }
+.contact-links a:not(:last-child)::after { content: '·'; position: relative; left: 9px; color: #cbd5e1; }
 .resume__contacts a { color: #4338ca; text-decoration: none; font-weight: 500; }
 .resume__contacts a:hover { text-decoration: underline; }
-.resume__contacts .sep { color: #cbd5e1; margin: 0 6px; }
 
 .section { margin-top: 22px; }
 .section__title {
@@ -207,6 +210,8 @@ body {
   .toolbar .actions .btn { flex: 1; justify-content: center; }
   .group-grid { grid-template-columns: 1fr; }
   .inline-list { display: block; }
+  .contact-links { align-items: flex-start; flex-direction: column; gap: 2px; }
+  .contact-links a::after { display: none; }
   .project-grid { grid-template-columns: 1fr; }
 }
 
